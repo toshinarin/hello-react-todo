@@ -87,6 +87,21 @@ If you were building this from scratch, here is the sequence we followed:
 
 Understanding how data moves in Redux can be tricky. Here is a simplified flow for "Adding a Todo":
 
+```mermaid
+sequenceDiagram
+    participant User
+    participant Form as TodoForm
+    participant Store as Redux Store
+    participant List as TodoList
+
+    User->>Form: 1. Types "Buy Milk" & Clicks Save
+    Form->>Store: 2. dispatch(addTodo)
+    Note over Store: 3. Action sent: { type: 'todos/addTodo' }
+    Note over Store: 4. Reducer updates State
+    Store-->>List: 5. State Change Detected
+    List->>User: 6. Re-renders UI
+```
+
 1.  **User Event**: User types "Buy Milk" and clicks **Save**.
 2.  **Dispatch**: `TodoForm` calls `dispatch(addTodo({ text: "Buy Milk" }))`.
 3.  **Action**: An action object `{ type: 'todos/addTodo', payload: { ... } }` is sent to the Store.

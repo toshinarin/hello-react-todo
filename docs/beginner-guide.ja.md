@@ -88,6 +88,21 @@ src/
 
 Redux でデータがどのように動くかを理解するのは難しいかもしれません。ここでは「Todo の追加」を例にした簡略化されたフローを示します：
 
+```mermaid
+sequenceDiagram
+    participant User as ユーザー
+    participant Form as TodoForm
+    participant Store as Redux Store
+    participant List as TodoList
+
+    User->>Form: 1. 「牛乳を買う」と入力 & Save
+    Form->>Store: 2. dispatch(addTodo)
+    Note over Store: 3. アクション送信: { type: 'todos/addTodo' }
+    Note over Store: 4. リデューサーが状態を更新
+    Store-->>List: 5. 状態変更を検知
+    List->>User: 6. UIを再レンダリング
+```
+
 1.  **ユーザー操作**: ユーザーが「牛乳を買う」と入力し、**Save** をクリックします。
 2.  **ディスパッチ**: `TodoForm` が `dispatch(addTodo({ text: "牛乳を買う" }))` を呼び出します。
 3.  **アクション**: アクションオブジェクト `{ type: 'todos/addTodo', payload: { ... } }` がストアに送信されます。
