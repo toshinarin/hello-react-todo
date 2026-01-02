@@ -67,6 +67,20 @@ To preview the production build locally:
 yarn preview
 ```
 
+### Deploying to GitHub Pages
+
+To deploy this application to [GitHub Pages](https://pages.github.com/):
+
+1.  Ensure your repository is named `hello-react-todo` (or update `base` in `vite.config.ts`).
+2.  Run the deployment command:
+
+    ```bash
+    yarn deploy
+    ```
+
+    This command runs the build and pushes the `dist` directory to the `gh-pages` branch.
+3.  Go to your GitHub Repository Settings > Pages, and ensure the source is set to the `gh-pages` branch.
+
 ## Directory Structure
 
 -   `src/components`: UI components (TodoList, Forms, Controls, etc.)
