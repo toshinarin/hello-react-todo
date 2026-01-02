@@ -40,7 +40,7 @@ function App() {
     <div className="min-h-screen p-4 sm:p-8">
       <div className="mx-auto max-w-5xl">
         <header className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-900">Todo App</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Hello React Todo</h1>
           <button
             onClick={handleAddStart}
             className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

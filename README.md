@@ -1,4 +1,4 @@
-# React Todo App
+# Hello React Todo
 
 A feature-rich Todo App built with React, Redux Toolkit, and Tailwind CSS.
 
