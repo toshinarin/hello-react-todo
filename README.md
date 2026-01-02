@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# React Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A feature-rich Todo App built with React, Redux Toolkit, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Dashboard**: Centralized view for all your tasks.
+-   **Task Management**: Create, Read, Update, and Delete tasks.
+-   **Priorities**: Assign Low, Medium, or High priority to tasks.
+-   **Deadlines**: Set due dates for tasks.
+-   **Filtering**: Filter tasks by text search, completion status, and priority.
+-   **Sorting**: Sort tasks by Creation Date, Priority, or Due Date.
+-   **Persistence**: Data is automatically saved to LocalStorage.
+-   **Responsive Design**: Modern UI optimized for both desktop and mobile.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Framework**: React 19 + Vite
+-   **Language**: TypeScript
+-   **State Management**: Redux Toolkit
+-   **Routing**: React Router
+-   **Styling**: Tailwind CSS v4 (@tailwindcss/vite)
+-   **Package Manager**: Yarn v4 (Berry)
 
-## Expanding the ESLint configuration
+## Setup & Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project uses **Yarn v4** via [Corepack](https://nodejs.org/api/corepack.html).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+-   Node.js (v18 or later recommended)
+-   Corepack enabled:
+    ```bash
+    corepack enable
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+# Install dependencies
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the development server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Building for Production
+
+Build the application for deployment:
+
+```bash
+yarn build
+```
+
+To preview the production build locally:
+
+```bash
+yarn preview
+```
+
+## Directory Structure
+
+-   `src/components`: UI components (TodoList, Forms, Controls, etc.)
+-   `src/store`: Redux store configuration and slices.
+-   `src/types`: TypeScript type definitions.
+-   `src/App.tsx`: Main application layout.
+
+## Credits
+
+This project was created using [**Antigravity**](https://antigravity.google/).
