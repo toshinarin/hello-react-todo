@@ -11,6 +11,14 @@ lerna-debug.log*
 node_modules
 .pnp
 .pnp.js
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 
 # Build
 dist
