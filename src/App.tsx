@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Controls } from './components/Controls';
-import { TodoList } from './components/TodoList';
+import { TodoListContainer } from './components/TodoListContainer';
 import { Modal } from './components/Modal';
 import { TodoForm } from './components/TodoForm';
 import { addTodo, updateTodo } from './store/todoSlice';
@@ -51,7 +51,7 @@ function App() {
 
         <main>
           <Controls />
-          <TodoList onEdit={handleEditStart} />
+          <TodoListContainer onEdit={handleEditStart} />
         </main>
 
         <Modal

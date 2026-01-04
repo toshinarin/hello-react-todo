@@ -1,46 +1,15 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '../store/store';
-import { deleteTodo, toggleTodo } from '../store/todoSlice';
 import type { Todo } from '../types/todo';
 
 interface TodoListProps {
+    todos: Todo[];
     onEdit: (todo: Todo) => void;
+    onToggle: (id: string) => void;
+    onDelete: (id: string) => void;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({ onEdit }) => {
-    const dispatch = useDispatch();
-    const { items, filter, sort } = useSelector((state: RootState) => state.todos);
-
-    const filteredItems = items.filter(todo => {
-        const matchesText = todo.text.toLowerCase().includes(filter.text.toLowerCase());
-        const matchesStatus =
-            filter.status === 'all' ? true :
-                filter.status === 'active' ? !todo.completed :
-                    todo.completed;
-        const matchesPriority = filter.priority ? todo.priority === filter.priority : true;
-
-        return matchesText && matchesStatus && matchesPriority;
-    });
-
-    const sortedItems = [...filteredItems].sort((a, b) => {
-        let comparison = 0;
-        if (sort.by === 'date') {
-            const dateA = a.expirationDate || '9999-99-99';
-            const dateB = b.expirationDate || '9999-99-99';
-            comparison = dateA.localeCompare(dateB);
-        } else if (sort.by === 'priority') {
-            const pMap = { high: 3, medium: 2, low: 1, undefined: 0 }; // undefined priority = lowest?
-            const pA = pMap[a.priority || 'medium']; // Default to medium if not set? Or handle undefined
-            const pB = pMap[b.priority || 'medium'];
-            comparison = pA - pB;
-        } else {
-            comparison = a.createdAt - b.createdAt;
-        }
-        return sort.direction === 'asc' ? comparison : -comparison;
-    });
-
-    if (sortedItems.length === 0) {
+export const TodoList: React.FC<TodoListProps> = ({ todos, onEdit, onToggle, onDelete }) => {
+    if (todos.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-300 bg-white py-12 text-center shadow-sm">
                 <div className="rounded-full bg-gray-50 p-3">
@@ -78,13 +47,13 @@ export const TodoList: React.FC<TodoListProps> = ({ onEdit }) => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                    {sortedItems.map((todo) => (
+                    {todos.map((todo) => (
                         <tr key={todo.id} className="group hover:bg-gray-50">
                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                                 <input
                                     type="checkbox"
                                     checked={todo.completed}
-                                    onChange={() => dispatch(toggleTodo(todo.id))}
+                                    onChange={() => onToggle(todo.id)}
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                             </td>
@@ -107,7 +76,7 @@ export const TodoList: React.FC<TodoListProps> = ({ onEdit }) => {
                                     Edit
                                 </button>
                                 <button
-                                    onClick={() => dispatch(deleteTodo(todo.id))}
+                                    onClick={() => onDelete(todo.id)}
                                     className="text-red-600 hover:text-red-900 opacity-0 group-hover:opacity-100 transition-opacity"
                                 >
                                     Delete
