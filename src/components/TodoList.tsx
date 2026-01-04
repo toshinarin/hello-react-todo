@@ -71,13 +71,13 @@ export const TodoList: React.FC<TodoListProps> = ({ todos, onEdit, onToggle, onD
                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                 <button
                                     onClick={() => onEdit(todo)}
-                                    className="text-indigo-600 hover:text-indigo-900 mr-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    className="text-indigo-600 hover:text-indigo-900 mr-4 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                                 >
                                     Edit
                                 </button>
                                 <button
                                     onClick={() => onDelete(todo.id)}
-                                    className="text-red-600 hover:text-red-900 opacity-0 group-hover:opacity-100 transition-opacity"
+                                    className="text-red-600 hover:text-red-900 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                                 >
                                     Delete
                                 </button>
